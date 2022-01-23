@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_01_19_020229) do
+ActiveRecord::Schema.define(version: 2022_01_23_181609) do
 
   create_table "fruits", force: :cascade do |t|
     t.string "genus"
@@ -19,6 +19,7 @@ ActiveRecord::Schema.define(version: 2022_01_19_020229) do
     t.string "order"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "fruity_vice_id"
   end
 
 end
