@@ -1,25 +1,42 @@
 import React from "react";
+import Card from './Card';
+import { useEffect } from 'react';
+import { useState } from 'react';
 
-class FetchFruit extends React.Component {
-    state = {
-        loading: true
-    };
+const FetchFruit = () => {
+
+    const url = "http://localhost:3000/fruits";
+    const [loading, setLoading] = useState(true)
+    const [apiData, setApiData] = useState([])
     
-    async componentDidMount() {
-        const url = "http://localhost:3000/fruits";
-        const response = await fetch(url); 
-        const data = await response.json();
-       console.log(data);
-    }
-    
-    
-    render() {
+
+    const getData = () => {
+        return fetch(url)
+          .then((response) => response.json())
+          .then((data) => {
+            setApiData(fruit => [...fruit, ...data])
+            setLoading(false)
+          });
+        }
+        useEffect(() => {
+            getData();
+          }, []);
+
         return (
             <div> 
-           {this.state.loading ? <div>loading...</div> : <div>fruit..</div>}
+            {loading ? <div className="loading"></div> : null}
+            {apiData.map((f,i) => 
+             <Card   
+              genus={f.genus}
+              name={f.name}
+              family={f.family}
+              order={f.order}
+              key={i}
+              />
+            )}
            </div>
         );
     }
- }
+
 
  export default FetchFruit;
