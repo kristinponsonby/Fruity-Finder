@@ -16,7 +16,7 @@ class FruitySearch
 
     def to_fruits
         fruit_ids = self.fruits.map do |fruit| 
-            Fruit.find_or_create_by(fruit_id: fruit["id"]) do |fruit|
+            Fruit.find_or_create_by(fruity_vice_id: fruit["id"]) do |fruit|
                 fruit.genus = fruit["genus"]
                 fruit.name = fruit["name"]
                 fruit.family = fruit["family"]
