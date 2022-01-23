@@ -1,5 +1,5 @@
 class FruitySearch
-    attr_reader :response, :fruits
+    attr_reader :fruits
 
     def initialize
         url = URI("https://www.fruityvice.com/api/fruit/all")
@@ -10,21 +10,23 @@ class FruitySearch
         request = Net::HTTP::Get.new(url)
         
         response = https.request(request)
-        @response = JSON.parse(response.read_body)
-        @fruits = @response['fruits']
+        @fruits = JSON.parse(response.read_body)
+       
     end
 
     def to_fruits
         fruit_ids = self.fruits.map do |fruit| 
-            Fruit.find_or_create_by(fruity_vice_id: fruit["id"]) do |fruit|
-                fruit.genus = fruit["genus"]
-                fruit.name = fruit["name"]
-                fruit.family = fruit["family"]
-                fruit.order = fruit["order"]
+            Fruit.find_or_create_by(fruity_vice_id: fruit["id"]) do |record|
+                record.genus = fruit["genus"]
+                record.name = fruit["name"]
+                record.family = fruit["family"]
+                record.order = fruit["order"]
             end.id
         end
+        binding.pry
         Fruit.where(id: fruit_ids)
     end
-
+    
 
 end
+
