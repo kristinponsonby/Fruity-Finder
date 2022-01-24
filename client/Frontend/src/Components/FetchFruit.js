@@ -28,27 +28,31 @@ const FetchFruit = () => {
              <input className = "search" type="text" placeholder="Search..." onChange={event => {setSearchTerm(event.target.value)}}/>
               {apiData.filter((f) => {
               if (searchTerm == '') {
-                  return ''
+                  return  <Card   
+                  genus={f.genus}
+                  name={f.name}
+                  family={f.family}
+                  order={f.order}
+                
+                  />
               } else if (f.name.toLowerCase().includes(searchTerm.toLowerCase())) {
                   return f
                    }
                 }).map((f,i) => {
                return (
                <div className="fruit" key={i}>
-                    <p>{f.name}</p>
-               </div>
-               );
-              })}
-            {loading ? <div className="loading"></div> : null}
-            {apiData.map((f,i) => 
-             <Card   
+                   <Card   
               genus={f.genus}
               name={f.name}
               family={f.family}
               order={f.order}
               key={i}
               />
-            )}
+               </div>
+               );
+              })}
+            {loading ? <div className="loading"></div> : null}
+           
            </div>
         );
     }
