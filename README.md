@@ -1,24 +1,27 @@
-# README
+# Welcome to Fruity Finder!
+Clone down this repository. You will need node and npm installed globally on your machine.
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Back End Install:
 
-Things you may want to cover:
+rails db:migrate
 
-* Ruby version
+rails db:seed
 
-* System dependencies
+note: you do not need an API key to run this application. 
 
-* Configuration
+run rails to start the server
+visit localhost:3000/fruits
 
-* Database creation
+Front End Install 
 
-* Database initialization
+npm install
 
-* How to run the test suite
+npm start 
 
-* Services (job queues, cache servers, search engines, etc.)
+To Visit App:
 
-* Deployment instructions
+localhost:30001
 
-* ...
+Search through the database of fruits and view their genus, family, and order. The search bar allows users to search for a fruit by name. 
+
+
