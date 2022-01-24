@@ -11,6 +11,7 @@ note: you do not need an API key to run this application.
 
 run rails to start the server
 visit localhost:3000/fruits
+or localhost:3000/fruits/1
 
 Front End Install 
 

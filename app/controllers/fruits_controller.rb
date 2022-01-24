@@ -7,7 +7,7 @@ class FruitsController < ApplicationController
 
     #GET fruits/1
     def show 
-        fruit = Fruit.find(params[:fruity_vice_id])
+        fruit = Fruit.find(params[:id])
         render json: fruit
     end
 
