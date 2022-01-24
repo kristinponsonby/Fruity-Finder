@@ -4,8 +4,10 @@ import FetchFruit from './Components/FetchFruit';
 
 
 const App = () => {
-  return <div className="container">Welcome to Fruity Finder
+  return <div className="header-text"><h1>Welcome to Fruity Finder</h1>
+     
        <FetchFruit /></div>
+       
 }
 
 export default App;
