@@ -24,36 +24,36 @@ const FetchFruit = () => {
           }, []);
 
         return (
-            <div className = "fruit-container"> 
-             <input className = "search" type="text" placeholder="Search..." onChange={event => {setSearchTerm(event.target.value)}}/>
-              {apiData.filter((f) => {
-              if (searchTerm == '') {
-                  return  <Card   
+            <div className="fruit-container"> 
+                <input className="search" type="text" placeholder="Search..." onChange={event => {setSearchTerm(event.target.value)}}/>
+
+                {apiData.filter((f) => {
+                    if (searchTerm == '') {
+                        return  <Card   
+                                genus={f.genus}
+                                name={f.name}
+                                family={f.family}
+                                order={f.order}
+                                />
+                    } else if (f.name.toLowerCase().includes(searchTerm.toLowerCase())) {
+                        return f
+                    }
+                  }).map((f,i) => {
+                        return (
+               <div className="fruit" key={i}>
+                  <Card   
                   genus={f.genus}
                   name={f.name}
                   family={f.family}
                   order={f.order}
-                
+                  key={i}
                   />
-              } else if (f.name.toLowerCase().includes(searchTerm.toLowerCase())) {
-                  return f
-                   }
-                }).map((f,i) => {
-               return (
-               <div className="fruit" key={i}>
-                   <Card   
-              genus={f.genus}
-              name={f.name}
-              family={f.family}
-              order={f.order}
-              key={i}
-              />
                </div>
                );
               })}
-            {loading ? <div className="loading"></div> : null}
+            { loading ? <div className="loading"></div> : null }
            
-           </div>
+              </div>
         );
     }
 
