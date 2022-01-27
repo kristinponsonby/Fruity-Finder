@@ -1,12 +1,12 @@
 import './App.css';
 import React from 'react';
-import FetchFruit from './Components/FetchFruit';
+import FruitIndex from './Components/FruitIndex';
 
 
 const App = () => {
   return <div className="header-text"><h1>Welcome to Fruity Finder</h1>
      
-       <FetchFruit /></div>
+       <FruitIndex /></div>
        
 }
 

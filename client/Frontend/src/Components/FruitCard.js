@@ -1,5 +1,5 @@
 
-const Card = ({genus, name, family, order}) => {
+const FruitCard = ({genus, name, family, order}) => {
 
 return (
     <div className='card' >
@@ -14,4 +14,4 @@ return (
 
 }
 
-export default Card;
+export default FruitCard;

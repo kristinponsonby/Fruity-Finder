@@ -1,10 +1,10 @@
 import React from "react";
-import Card from './Card';
+import FruitCard from './FruitCard';
 import { useEffect } from 'react';
 import { useState } from 'react';
 
 
-const FetchFruit = () => {
+const FruitIndex = () => {
 
     const url = "http://localhost:3000/fruits";
     const [loading, setLoading] = useState(true)
@@ -29,7 +29,7 @@ const FetchFruit = () => {
 
                 { apiData.filter((fruit) => {
                     if (searchTerm === '') {
-                        return  <Card   
+                        return  <FruitCard   
                                 genus={fruit.genus}
                                 name={fruit.name}
                                 family={fruit.family}
@@ -43,7 +43,7 @@ const FetchFruit = () => {
                         return (
 
                   <div className="fruit" key={i}>
-                          <Card   
+                          <FruitCard   
                           genus={fruit.genus}
                           name={fruit.name}
                           family={fruit.family}
@@ -62,4 +62,4 @@ const FetchFruit = () => {
     }
 
 
- export default FetchFruit;
+ export default FruitIndex;
