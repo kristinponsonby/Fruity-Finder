@@ -25,35 +25,39 @@ const FetchFruit = () => {
 
         return (
             <div className="fruit-container"> 
-                <input className="search" type="text" placeholder="Search..." onChange={event => {setSearchTerm(event.target.value)}}/>
+                <input className="search" type="text" placeholder="Search..." onChange={ event => { setSearchTerm(event.target.value) } } />
 
-                {apiData.filter((f) => {
-                    if (searchTerm == '') {
+                { apiData.filter((fruit) => {
+                    if (searchTerm === '') {
                         return  <Card   
-                                genus={f.genus}
-                                name={f.name}
-                                family={f.family}
-                                order={f.order}
+                                genus={fruit.genus}
+                                name={fruit.name}
+                                family={fruit.family}
+                                order={fruit.order}
                                 />
-                    } else if (f.name.toLowerCase().includes(searchTerm.toLowerCase())) {
-                        return f
+                  } else if (fruit.name.toLowerCase().includes(searchTerm.toLowerCase())) {
+                        return fruit
                     }
-                  }).map((f,i) => {
+
+                  }).map((fruit,i) => {
                         return (
-               <div className="fruit" key={i}>
-                  <Card   
-                  genus={f.genus}
-                  name={f.name}
-                  family={f.family}
-                  order={f.order}
-                  key={i}
-                  />
-               </div>
-               );
-              })}
-            { loading ? <div className="loading"></div> : null }
+
+                  <div className="fruit" key={i}>
+                          <Card   
+                          genus={fruit.genus}
+                          name={fruit.name}
+                          family={fruit.family}
+                          order={fruit.order}
+                          key={i}
+                          />
+                  </div>
+
+                              );
+                           })}
+
+            { loading ? <div className="loading"> Loading...  </div> : null }
            
-              </div>
+            </div>
         );
     }
 
